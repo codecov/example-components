@@ -1,0 +1,9 @@
+class Smiles:
+    def smile():
+        return ":)"
+    def frown():
+        return ":("
+    def cry():
+        return ":'("
+    def tongue():
+        return ":P"
