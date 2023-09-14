@@ -5,14 +5,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Python 3.11
         uses: actions/setup-python@v2
         with:
           python-version: '3.10'
       - name: Install dependencies
         run: pip install -r requirements.txt
+
       - name: Run tests and collect coverage for calculator
         run: pytest --cov
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_ORG_TOKEN }}
+        with:
+          flags: simple
+
+      - name: Run tests and collect coverage for complex calculator
+        run: pytest --cov calculator.complex
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_ORG_TOKEN }}
+        with:
+          flags: complex
+
+      - name: Run tests and collect coverage for smiles
+        run: pytest --cov smiles
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_ORG_TOKEN }}
+        with:
+          flags: smiles
