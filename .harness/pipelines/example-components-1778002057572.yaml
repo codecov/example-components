@@ -19,6 +19,13 @@ pipeline:
                   spec:
                     shell: Sh
                     command: echo "Welcome to Harness CI"
+              - step:
+                  type: Run
+                  name: Install deps
+                  identifier: Install_Deps
+                  spec:
+                    shell: Sh
+                    command: pip install -r requirements.txt
           platform:
             os: Linux
             arch: Amd64
