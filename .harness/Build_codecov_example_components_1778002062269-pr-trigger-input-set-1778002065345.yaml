@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_codecov_example_components_1778002062269-pr-trigger-input-set
+  identifier: Build_codecov_example_components_1778002062269prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_codecov_example_components_1778002062269
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
